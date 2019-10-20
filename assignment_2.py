@@ -102,16 +102,14 @@ def find_significant_energy_increase_iterative(A):
     the most significant energy increase period.
     time complexity = O(n)
     """
-    sumOfMaxSubArray = 0
-    maxSubArrayEndingAtI = (0, 0)
-    maxSubArraySoFar = (0, 0)
-    total = 0
     inputArray = []
     for i in range(len(A) - 1):
         inputArray.append(A[i + 1] - A[i])
 
-    if not (any(i > 0 for i in inputArray)):
-        return "Unsolvable using Kadane's since Kadane's requires atleast one positive number in the input array"
+    sumOfMaxSubArray = min(inputArray)
+    maxSubArrayEndingAtI = (0, 0)
+    maxSubArraySoFar = (0, 0)
+    total = 0
 
     for i in range(len(inputArray)):
 
@@ -242,7 +240,7 @@ def test():
     print(find_significant_energy_increase_recursive(ENERGY_LEVEL))
     print("\n--------------------------------------------------------\n")
 
-    print("Maximum Sub Array Iterative (Kadane's):")
+    print("Maximum Sub Array Iterative:")
     print(find_significant_energy_increase_iterative(ENERGY_LEVEL))
     print("\n--------------------------------------------------------\n")
 
